@@ -1,18 +1,18 @@
 <html>
     <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="codigoCSS.css">
+    <link rel="stylesheet" href="../../codigoCSS.css">
     </head>
     <body>
         <form action="modificar.php" method="get">
-        <input class='input' type="text" name="nombre" placeholder="Nombre">
-        <input  class='input' type="email"  name="correo" placeholder="correo">
-        <select name="tipo">
+        <input class='input' type="text" name="nombre" placeholder="Nombre"><br>
+        <input  class='input' type="email"  name="correo" placeholder="correo"><br>
+        <select name="tipo"><br>
             <option>.......</option>
             <option  value="administrador">Administrador</option>
             <option  value="comprador">Comprador</option>
             <option  value="vendedor ">Vendedor</option>
-        </select>
+        </select><br>
         <input class='input' type="submit" name="enviar" value="enviar">
         </form>
         
