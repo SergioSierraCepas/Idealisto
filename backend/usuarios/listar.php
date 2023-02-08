@@ -1,7 +1,7 @@
 <html>
    <head>
    <meta charset="UTF-8">
-   <link rel="stylesheet" href="codigoCSS.css">
+   <link rel="stylesheet" href="../../codigoCSS.css">
    </head>
 </html>
 <?php
