@@ -10,7 +10,7 @@
         <input class='input'  type="text" name="nombre" placeholder="Nombre"><br>
         <input class='input' type="email"  name="correo" placeholder="correo"><br>
         <input type="password" name="pass" placeholder="password"><br>
-        <select name="tipo"><br>
+        <select name="tipo">
             <option>.......</option>
             <option  value="administrador">Administrador</option>
             <option  value="comprador">Comprador</option>
