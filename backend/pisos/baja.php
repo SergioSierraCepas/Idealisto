@@ -1,12 +1,16 @@
 <html>
+    <head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="codigoCSS.css">
+    </head>
     <body>
         <form action="alta.php" method="POST" enctype="multipart/form-data">
-            Calle:<input type="text" name="calle"><br>
-            Numero:<input type="text" name="numero"><br>
-            Piso:<input type="number" name="piso"><br>
-            Puerta:<input type="text" name="puerta"><br>
-            Usuario <input type="text" name="usuario"><br>
-            <input type="submit" value="enviar" name="enviar">
+            Calle:<input class='input' type="text" name="calle"><br>
+            Numero:<input class='input' type="text" name="numero"><br>
+            Piso:<input class='input' type="number" name="piso"><br>
+            Puerta:<input class='input' type="text" name="puerta"><br>
+            Usuario <input class='input' type="text" name="usuario"><br>
+            <input class='input' type="submit" value="enviar" name="enviar">
         </form>
     </body>
 </html>

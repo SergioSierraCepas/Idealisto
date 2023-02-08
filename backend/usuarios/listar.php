@@ -1,5 +1,10 @@
+<html>
+   <head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="codigoCSS.css">
+   </head>
+</html>
 <?php
-
 //incluimos variables externas 
 include "../servidor.php";
 //conexion con el servidor 

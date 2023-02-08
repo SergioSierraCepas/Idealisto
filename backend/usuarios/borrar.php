@@ -1,18 +1,20 @@
 <html>
     <head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="codigoCSS.css">
     </head>
     <body>
     <form action="borrar.php" method="get">
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="email"  name="correo" placeholder="correo">
-        <input type="password" name="pass" placeholder="password">
+        <input class='input' type="text" name="nombre" placeholder="Nombre">
+        <input class='input' type="email"  name="correo" placeholder="correo">
+        <input class='input' type="password" name="pass" placeholder="password">
         <select name="tipo">
             <option>.......</option>
             <option  value="administrador">Administrador</option>
             <option  value="comprador">Comprador</option>
             <option  value="vendedor ">Vendedor</option>
         </select>
-        <input type="submit" name="enviar" value="enviar">
+        <input  class='input' type="submit" name="enviar" value="enviar">
         </form>
     <body>
    </html> 

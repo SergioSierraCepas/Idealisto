@@ -1,16 +1,18 @@
 <html>
     <head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="codigoCSS.css">
     </head>
     <body>
         <form action="buscar.php" method="get">
-            <input type="text" name="name" placeholder="nombre">
-            <input type='email' name="correo" placeholder="correo">
+            <input class='input' type="text" name="name" placeholder="nombre">
+            <input class='input' type='email' name="correo" placeholder="correo">
             <select name="tipo">
                 <option>.......</option>
                 <option  value="administrador">Administrador</option>
                 <option  value="comprador">Comprador</option>
                 <option  value="vendedor ">Vendedor</option>
-            <input type="submit" name="buscar" value="buscar">
+            <input class='input' type="submit" name="buscar" value="buscar">
         </select>
 
         <form>

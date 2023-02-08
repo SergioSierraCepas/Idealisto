@@ -1,4 +1,8 @@
 <html>
+    <hrad>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="codigoCSS.css">
+    </head>
     <body>
         <form action='modificar.php'>
             Calle:<input type="text" name="calle"><br>
@@ -49,18 +53,18 @@ if (isset($_REQUEST['modificar'])){
             echo "<h3> Cambie cualquier campo que sede para modificar la oferta</h3>";
             echo "<form  action='modificar.php' method='POST' enctype='multipart/form-data'>";
             echo "
-                Calle:<input type='text' name='calle'  value=".$resultado['calle']."><br>
-                Numero:<input type='text' name='numero'  value=".$resultado['numero']."><br>
-                Piso:<input type='number' name='piso'  value=".$resultado['piso']."><br>
-                puerta:<input type='text' name='puerta'  value=".$resultado['puerta']."><br>
-                Codigo Postal <input type='number' name='cp'  value=".$resultado['cp']."><br>
-                metros(m2):<input type='number' name='m2'  value=".$resultado['metros']."><br>
-                zona:<input type='text' name='zona'  value=".$resultado['zona']."><br>
-                precio:<input type='number' name='precio'  value=".$resultado['precio']."><br>
-                <input type='hidden' name='max-size' vale='102400'><br>
-                imagen <input type='file' name='imagen'><br>";
-            echo "<input type='hidden' name='codigo' value=".$resultado["Codigo_piso"].">";
-            echo "<input type='submit' value='actualizar' name='entrar2'>";
+                Calle:<input class='input'  type='text' name='calle'  value=".$resultado['calle']."><br>
+                Numero:<input class='input' type='text' name='numero'  value=".$resultado['numero']."><br>
+                Piso:<input class='input' type='number' name='piso'  value=".$resultado['piso']."><br>
+                puerta:<input class='input' type='text' name='puerta'  value=".$resultado['puerta']."><br>
+                Codigo Postal <input clas='input' type='number' name='cp'  value=".$resultado['cp']."><br>
+                metros(m2):<input class='input' type='number' name='m2'  value=".$resultado['metros']."><br>
+                zona:<input class='input' type='text' name='zona'  value=".$resultado['zona']."><br>
+                precio:<input class='input'  type='number' name='precio'  value=".$resultado['precio']."><br>
+                <input class='input' type='hidden' name='max-size' vale='102400'><br>
+                imagen <input class='input'  type='file' name='imagen'><br>";
+            echo "<input class='input' type='hidden' name='codigo' value=".$resultado["Codigo_piso"].">";
+            echo "<input class='input' type='submit' value='actualizar' name='entrar2'>";
             echo "</form>";
 
         }

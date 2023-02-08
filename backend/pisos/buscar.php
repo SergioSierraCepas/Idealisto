@@ -1,11 +1,15 @@
 <html>
+    <head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="codigoCSS.css">
+    </head>
     <body>
         <form action='buscar.php'>
-            Calle:<input type="text" name="calle"><br>
-            Numero:<input type="text" name="numero"><br>
-            Piso:<input type="number" name="piso"><br>
-            puerta:<input type="text" name="puerta"><br>
-            <input type="submit" value="buscar" name='buscar'>
+            Calle:<input class='input'  type="text" name="calle"><br>
+            Numero:<input class='input'  type="text" name="numero"><br>
+            Piso:<input class='input' type="number" name="piso"><br>
+            puerta:<input class='input' type="text" name="puerta"><br>
+            <input class='input'  type="submit" value="buscar" name='buscar'>
         </form>
     </body>
 </html>

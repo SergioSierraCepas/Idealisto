@@ -1,17 +1,19 @@
 <html>
     <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="codigoCSS.css">
     </head>
     <body>
         <form action="modificar.php" method="get">
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="email"  name="correo" placeholder="correo">
+        <input class='input' type="text" name="nombre" placeholder="Nombre">
+        <input  class='input' type="email"  name="correo" placeholder="correo">
         <select name="tipo">
             <option>.......</option>
             <option  value="administrador">Administrador</option>
             <option  value="comprador">Comprador</option>
             <option  value="vendedor ">Vendedor</option>
         </select>
-        <input type="submit" name="enviar" value="enviar">
+        <input class='input' type="submit" name="enviar" value="enviar">
         </form>
         
     </body>
@@ -55,17 +57,17 @@ if (isset($_REQUEST['enviar'])){
         else{
             $resultado =mysqli_fetch_array($consulta);
                     echo "<form  action='modificar.php' method='GET'>";
-                            echo "Nombre <input type='text' name='nom' value=".$resultado['nombres']."><br>";
-                            echo "Correo <input type='email' name='cor' id='email' value=".$resultado['correo']."><br>";
-                            echo "Password <input type='text' name='pass' value=".$resultado['clave']."><br>";
+                            echo "Nombre <input class='input' type='text' name='nom' value=".$resultado['nombres']."><br>";
+                            echo "Correo <input class='input' type='email' name='cor' id='email' value=".$resultado['correo']."><br>";
+                            echo "Password <input class='input' type='text' name='pass' value=".$resultado['clave']."><br>";
                             echo "<select name='tip'";
                                 echo "<option value=".$resultado['tipo_usuario'].">". $resultado['tipo_usuario']."</option>";
                                 echo"<option value='comprador'>comprador</option>
                                      <option value='vendedor'>vendedor</option>
                                      <option value='Administrador'>administrador</option>
                                 </select>";
-                            echo "<input type='hidden' name='id' value=".$resultado['usuario_id']."><br><br>";
-                            echo "<input type='submit' value='actualizar' name='actualizar'>
+                            echo "<input class='input' type='hidden' name='id' value=".$resultado['usuario_id']."><br><br>";
+                            echo "<input class='inpit' type='submit' value='actualizar' name='actualizar'>
                     </form>";
 
         }

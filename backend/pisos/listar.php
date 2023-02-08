@@ -1,3 +1,9 @@
+<html>
+   <head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="codigoCSS.css">
+   </head>
+</html>
 <?php
 //conectamos con el servidor
 $conexion = mysqli_connect ("localhost", "root", "rootroot")  or die ("No se puede conectar con el servidor");

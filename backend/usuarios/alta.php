@@ -3,8 +3,8 @@
     </head>
     <body>
         <form action="alta.php" method="get">
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="email"  name="correo" placeholder="correo">
+        <input class='input'  type="text" name="nombre" placeholder="Nombre">
+        <input class='input' type="email"  name="correo" placeholder="correo">
         <input type="password" name="pass" placeholder="password">
         <select name="tipo">
             <option>.......</option>
@@ -12,7 +12,7 @@
             <option  value="comprador">Comprador</option>
             <option  value="vendedor ">Vendedor</option>
         </select>
-        <input type="submit" name="enviar" value="enviar" onClick= comprobar>
+        <input class='input' type="submit" name="enviar" value="enviar" onClick= comprobar>
         </form>
         
     </body>
@@ -42,6 +42,7 @@ if (isset($_REQUEST['enviar'])){
         echo $errores;
     }
     else {
+        $pass=md5($pass);
         //incluimos variables externas 
         include "../servidor.php";
         //conexion con el servidor

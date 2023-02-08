@@ -1,21 +1,22 @@
 <html>
     <head>
-
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="codigoCSS.css">
     </head>
     <body>
         <form action="alta.php" method="POST" enctype="multipart/form-data">
-            Calle:<input type="text" name="calle"><br>
-            Numero:<input type="text" name="numero"><br>
-            Piso:<input type="number" name="piso"><br>
-            Puerta:<input type="text" name="puerta"><br>
-            Codigo Postal <input type="number" name="cp"><br>
-            Metros(m2):<input type="number" name="m2"><br>
-            Zona:<input type="text" name="zona"><br>
-            Precio:<input type="number" name="precio"><br>
-             <input type="hidden" name="max-size" vale="102400"><br>
-            Imagen <input type="file" name="imagen"><br>
-            Usuario <input type="text" name="usuario"><br>
-            <input type="submit" value="enviar" name="enviar">
+            Calle:<input class='input'  type="text" name="calle"><br>
+            Numero:<input class='input' type="text" name="numero"><br>
+            Piso:<input class='input' type="number" name="piso"><br>
+            Puerta:<input class='input' type="text" name="puerta"><br>
+            Codigo Postal <input class='input' type="number" name="cp"><br>
+            Metros(m2):<input class='input' type="number" name="m2"><br>
+            Zona:<input class='input' type="text" name="zona"><br>
+            Precio:<input class='input' type="number" name="precio"><br>
+             <input  class='input'type="hidden" name="max-size" vale="102400"><br>
+            Imagen <input  class='input'type="file" name="imagen"><br>
+            Usuario <input class='input' type="text" name="usuario"><br>
+            <input class='input' type="submit" value="enviar" name="enviar">
         </form>
     </body>
 </html>
