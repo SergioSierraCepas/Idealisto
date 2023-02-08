@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+}
+.input {
+    font-size: 80%;
+    margin: 1%;
+}
+.submit {
+    font-size: 70%;
+    margin: .5%;
+}
+.otro {
+    font-size: 60%;
+    margin: .5%;
+}
+.pisos {
+    position: relative;
+    float: left;
+    width: 20%;
+    margin: 1%;
+    padding: 1%;
+    font-size: 80%;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+}
+.value {
+    border: 0;
+    width: 50%;
+    font-size: 100%;
+}
