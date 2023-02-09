@@ -56,4 +56,5 @@ if ($rows > 0) {
 else {
     echo "<p> Actualmente no hay contenido, inténtelo más tarde.</p>";
 }
-
+mysqli_close($conexion);
+?>
