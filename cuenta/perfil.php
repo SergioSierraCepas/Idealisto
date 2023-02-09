@@ -2,7 +2,7 @@
 session_start();
 
     # Conexión con el servidor
-        include "./servidor.php";
+        include "../servidor.php";
 
         $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
 
