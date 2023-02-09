@@ -4,7 +4,7 @@ session_start();
 <html>
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
-        <link rel="stylesheet" href="codigoCSS.css">
+        <link rel="stylesheet" href="../codigoCSS.css">
     </head>
     <body>
         <?php
