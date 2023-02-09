@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
-        <link rel="stylesheet" href="codigoCSS.css">
+        <link rel="stylesheet" href="../codigoCSS.css">
     </head>
     <body>
         <h2><u>Registro</u></h2>
@@ -42,7 +42,7 @@
             
             # Filtrar usuarios existentes
             # Conexión con el servidor
-                include "./servidor.php";
+                include "../servidor.php";
 
                 $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
             

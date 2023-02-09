@@ -33,7 +33,7 @@ session_start();
             $_SESSION['clave'] = $clave;
             
             # Conexión con el servidor
-                include "./servidor.php";
+                include "../servidor.php";
 
                 $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
 
@@ -50,7 +50,7 @@ session_start();
             if ($rows == 1) {
                 $bbdd = mysqli_fetch_array($consulta);
                 if ($bbdd['tipo_usuario'] == 'aministrador') {
-                    header("Location: backend.html");
+                    header("Location: ../backend/backend.html");
                 }
                 elseif ($bbdd['tipo_usuario'] == 'vendedor') {
                     header("Location: javascript:history.back()");
