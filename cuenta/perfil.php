@@ -69,6 +69,8 @@ session_start();
         
         if (!empty($nombre) && !empty($clave)) {
 
+            $clave = md5($clave);
+
             if ($tipo == 'vendedor') {
                 $tipo = 'vendedor';
             }
@@ -103,5 +105,6 @@ session_start();
         session_destroy();
         header("Location: login.php");
     }
+    mysqli_close($conexion);
 
 ?>

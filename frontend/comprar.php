@@ -93,6 +93,7 @@
                         echo "No ha sido posible";
                     }
             }
+            mysqli_close($conexion);
         }
 ?>
 

@@ -4,6 +4,7 @@ session_start();
 <html>
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="codigoCSS.css">
     </head>
     <body>
@@ -66,5 +67,6 @@ session_start();
         else {
             echo "<p style='color: red;'>El correo o la contraseña no es correcto</p>";
         }
+        mysqli_close($conexion);
     }
 ?>

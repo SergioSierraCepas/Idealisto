@@ -4,6 +4,7 @@ session_start();
 <html>
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="codigoCSS.css">
     </head>
     <body>
@@ -46,15 +47,6 @@ session_start();
                     $metros = trim(strip_tags($_REQUEST['metros']));
                     $zona = trim(strip_tags($_REQUEST['zona']));
                     $precio = trim(strip_tags($_REQUEST['precio']));
-
-                    /*echo $calle;
-                    echo $numero;
-                    echo $piso;
-                    echo $puerta;
-                    echo $cp;
-                    echo $metros;
-                    echo $zona;
-                    echo $precio;*/
 
                 # Subir foto al servidor
 
@@ -138,7 +130,7 @@ session_start();
                         
                         # Consulta
                             $query = "select * from pisos where calle like '$calle' and numero = '$numero' and piso = '$piso' and puerta like '$puerta' and cp = '$cp'";
-                            echo $query."<br>";
+                            //echo $query."<br>";
                         # Ejecutar consulta
                             $consulta = mysqli_query($conexion,$query);
 
@@ -158,14 +150,14 @@ session_start();
                                 
                                 # Sacar el id del usuario conectado
                                     $query = "select usuario_id from usuario where correo like '" . $_SESSION['correo'] . "'";
-                                    echo $query ."<br>";
+                                    //echo $query ."<br>";
                                     # Ejecutar consulta
                                         $consulta = mysqli_query($conexion,$query);
                                         $bbdd = mysqli_fetch_array($consulta);
                                         $user_id = $bbdd['usuario_id'];
                                 # Consulta
                                     $query = "insert into pisos values ( null, '$calle', $numero, $piso, '$puerta', $cp, $metros, '$zona', $precio, '$ruta', $user_id)";
-                                    echo $query ."<br>";
+                                    //echo $query ."<br>";
 
                                 # Ejecutar consulta
                                     $consulta = mysqli_query($conexion,$query);
@@ -179,6 +171,7 @@ session_start();
 
                         }
                 }
+                mysqli_close($conexion);
             }
         ?>
     </body>

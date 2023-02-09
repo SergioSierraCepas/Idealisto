@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="codigoCSS.css">
     </head>
     <body>
@@ -33,6 +34,8 @@
 
         if (!empty($nombre) && !empty($correo) && !empty($clave) && ($tipo == 1 || $tipo == 2)) {
             
+            $clave = md5($clave);
+
             if ($tipo == 1) {
                 $tipo = 'comprador';
             }
@@ -78,6 +81,7 @@
         else {
             echo "<p style='color: red;'>Faltan campos por rellenar</p>";
         }
+        mysqli_close($conexion);
     }
 
 ?>
