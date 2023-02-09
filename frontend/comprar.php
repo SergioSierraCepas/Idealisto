@@ -2,7 +2,7 @@
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="codigoCSS.css">
+        <link rel="stylesheet" href="../codigoCSS.css">
     </head>
     <body>
         
@@ -11,7 +11,7 @@
     session_start();
 
         # Conexión con el servidor
-            include "./servidor.php";
+            include "../servidor.php";
 
             $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -64,7 +64,7 @@
                 $precio = $_REQUEST['precio'];
 
                 # Conexión con el servidor
-                    include "./servidor.php";
+                   
 
                     $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -78,7 +78,7 @@
                         echo "Piso comprado";
 
                         # Conexión con el servidor
-                            include "./servidor.php";
+                        
 
                             $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
