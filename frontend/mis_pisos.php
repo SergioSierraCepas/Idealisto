@@ -34,18 +34,15 @@ if ($rows > 0) {
 
         $bbdd = mysqli_fetch_array($consulta2);
         
-        echo $bbdd['imagen'] ;
         echo "<div class='pisos'>";
         echo "<form action='comprar.php' method='post'>";
-        echo "<img src='" . $bbdd['imagen'] . "' class='value' width='95%'><br>";
-        echo "C/<input type='text' value='" . $bbdd['calle'] . "' class='value'> Nº<input type='text' value='" . $bbdd['numero'] . "' class='value'><br>";
-        echo "Piso: <input type='text' value='" . $bbdd['piso'] . " " . $bbdd['puerta'] . "' class='value'><br>";
-        echo "CP: <input type='number' value='" . $bbdd['cp'] . "' class='value'><br>";
-        echo "Dimensiones: <input type='text' value='" . $bbdd['metros'] . " m2' class='value'><br>";
-        echo "Localidad: <input type='text' value='" . $bbdd['zona'] . "' class='value'><br>";
-        echo "Precio: <input type='float' name='precio' value='" . $bbdd['precio'] . "' class='value'>€<br>";
-        echo "<input type='hidden' name='id_piso' value=" . $bbdd['Codigo_piso'] . ">";
-        echo "<input type='hidden' name='id_user' value=" . $bbdd['usuario_id'] . ">";
+        echo "<img src='" . $bbdd['imagen'] . "' class='value'><br><br>";
+        echo "<p>C/" . $bbdd['calle'] . " Nº " . $bbdd['numero'] . "</p>";
+        echo "<p>Piso: " . $bbdd['piso'] . "º " . $bbdd['puerta'] . "</p>";
+        echo "<p>CP: " . $bbdd['cp'] . "</p>";
+        echo "<p>Dimensiones: " . $bbdd['metros'] . " m2</p>";
+        echo "<p>Localidad: " . $bbdd['zona'] . "</p>";
+        echo "<p>Precio: " . $bbdd['precio'] . "€</p>";
         echo "<input type='submit' class='submit' name='añadir' value='Comprar'>";
         echo "</form>";
         echo "</div>";
