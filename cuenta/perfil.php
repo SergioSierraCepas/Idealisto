@@ -29,10 +29,10 @@ session_start();
     </head>
     <body>
         <h2><u>Perfil</u></h2>
-        <form action="perfil.php" method="post">
+        <form name="perfil" action="perfil.php" method="post">
             <input type='text' class="input" name="nombre" value='<?php echo $nombre ?>'><br>
-            Cambiar contrseña <input type="checkbox" onclick="pass()"><br><br>
-            <input type='text' class="claves" name="clave2" id="clave2" placeholder="Contraseña nueva"><span id="span"></span>
+            Cambiar contrseña <input type="checkbox" id="checkbox" onclick="pass()"><br>
+            <span id="span2"></span><input type='text' class="claves" name="clave2" id="clave2" placeholder="Contraseña nueva"><span id="span"></span>
             <input type='text' class="claves" name="clave" id="clave" placeholder="Contraseña actual">
             <p class="input">Tipo de usuario:
                 <select name="tipo" id="">
