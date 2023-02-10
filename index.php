@@ -16,10 +16,10 @@ session_start();
                     echo "<a href='./cuenta/login.php'><img src='./imagenes_index/pibe.jpg' class='imglogin' title='Iniciar Sesión'></a>";
                 }
                 else {
-                    echo "<a href='./cuenta/perfil.php'><img src='./imagenes_index/pibe.jpg' class='imglogin' title='Iniciar Sesión'></a>";
+                    echo "<a href='./cuenta/perfil.php'><img src='./imagenes_index/pibe.jpg' class='imglogin' title='Perfil'></a>";
                 }
             ?>
-            <a href="./cuenta/login.php"><img src="./imagenes_index/pibe.jpg" alt="" class="imglogin" title="Iniciar Sesión"></a>
+          
             <img src="./imagenes_index/logo.png" alt="" class="logoindex">
         </div>
             <table class="index">

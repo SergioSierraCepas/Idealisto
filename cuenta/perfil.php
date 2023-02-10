@@ -24,13 +24,13 @@ session_start();
 <html>
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
-        <link rel="stylesheet" href="codigoCSS.css">
+        <link rel="stylesheet" href="../codigoCSS.css">
     </head>
     <body>
         <h2><u>Perfil</u></h2>
         <form action="perfil.php" method="post">
             <input type='text' class="input" name="nombre" value='<?php echo $nombre ?>'><br>
-            <input type='text' class="input" name="clave" value='<?php echo $clave ?>'><br>
+            <input type='text' class="input" name="clave" placeholder="contraseña"><br>
             <p class="input">Tipo de usuario:
                 <select name="tipo" id="">
                     <option value='<?php echo $tipo ?>'><?php echo $tipo ?></option>
@@ -67,7 +67,7 @@ session_start();
             $clave = trim(strip_tags($_REQUEST['clave']));
             $tipo = trim(strip_tags($_REQUEST['tipo']));
         
-        if (!empty($nombre) && !empty($clave)) {
+        if (!empty($nombre)) {
 
             $clave = md5($clave);
 
