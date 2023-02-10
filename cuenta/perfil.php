@@ -25,12 +25,15 @@ session_start();
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
         <link rel="stylesheet" href="../codigoCSS.css">
+        <script src="../js.js"></script>
     </head>
     <body>
         <h2><u>Perfil</u></h2>
         <form action="perfil.php" method="post">
             <input type='text' class="input" name="nombre" value='<?php echo $nombre ?>'><br>
-            <input type='text' class="input" name="clave" placeholder="contraseña"><br>
+            Cambiar contrseña <input type="checkbox" onclick="pass()"><br><br>
+            <input type='text' class="input2" name="clave2" id="clave2" placeholder="Contraseña nueva"><span id="span"></span>
+            <input type='text' class="input2" name="clave" id="clave" placeholder="Contraseña actual">
             <p class="input">Tipo de usuario:
                 <select name="tipo" id="">
                     <option value='<?php echo $tipo ?>'><?php echo $tipo ?></option>
@@ -69,8 +72,6 @@ session_start();
         
         if (!empty($nombre)) {
 
-            $clave = md5($clave);
-
             if ($tipo == 'vendedor') {
                 $tipo = 'vendedor';
             }
@@ -82,13 +83,24 @@ session_start();
             }
 
             # Conexión con el servidor
-                include "./servidor.php";
+                include "../servidor.php";
 
                 $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
 
-            # Consulta
+            if (!empty($clave)) {
+                
+                $clave = md5($clave);
+
+                # Consulta
                 $query = "update usuario set nombres = '$nombre', clave = '$clave', tipo_usuario = '$tipo' where correo like '" . $_SESSION['correo'] ."'";
                 echo "$query <br>";
+            }
+            else {
+                # Consulta
+                $query = "update usuario set nombres = '$nombre', tipo_usuario = '$tipo' where correo like '" . $_SESSION['correo'] ."'";
+                echo "$query <br>";
+            }
+
 
             # Ejecutar consulta
                 $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
