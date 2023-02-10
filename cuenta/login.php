@@ -54,10 +54,10 @@ session_start();
                     header("Location: ../backend/backend.html");
                 }
                 elseif ($bbdd['tipo_usuario'] == 'vendedor') {
-                    header("Location: ../index.html");
+                    header("Location: ../index.php");
                 }
                 elseif ($bbdd['tipo_usuario'] == 'comprador') {
-                    header("Location: ../index.html");
+                    header("Location: ../index.php");
                 }
             }
             else {
