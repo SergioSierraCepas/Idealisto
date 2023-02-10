@@ -11,7 +11,7 @@ session_start();
         <?php
 
             if ($_SESSION['correo'] == null) {
-                header("Location: login.php");
+                header("Location: ../cuenta/login.php");
             }
             else {
 
