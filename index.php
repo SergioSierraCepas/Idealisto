@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,14 @@
 </head>
     <body>
         <div class="divlogo">
+            <?php
+                if ($_SESSION['correo'] == null) {
+                    echo "<a href='./cuenta/login.php'><img src='./imagenes_index/pibe.jpg' class='imglogin' title='Iniciar Sesión'></a>";
+                }
+                else {
+                    echo "<a href='./cuenta/perfil.php'><img src='./imagenes_index/pibe.jpg' class='imglogin' title='Iniciar Sesión'></a>";
+                }
+            ?>
             <a href="./cuenta/login.php"><img src="./imagenes_index/pibe.jpg" alt="" class="imglogin" title="Iniciar Sesión"></a>
             <img src="./imagenes_index/logo.png" alt="" class="logoindex">
         </div>
