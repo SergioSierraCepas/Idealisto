@@ -31,7 +31,7 @@ session_start();
         if (!empty($correo) && !empty($clave)) {
 
             $_SESSION['correo'] = $correo;
-            $_SESSION['clave'] = $clave;
+            $clave=md5($clave);
             
             # Conexión con el servidor
                 include "../servidor.php";
@@ -39,7 +39,7 @@ session_start();
                 $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
 
             # Consulta
-                $query = "select * from usuario where correo like '$correo' and clave = $clave";
+                $query = "select * from usuario where correo like '$correo' and clave = '$clave'";
                 // echo "$query <br>";
 
             # Ejecutar consulta
@@ -50,14 +50,14 @@ session_start();
 
             if ($rows == 1) {
                 $bbdd = mysqli_fetch_array($consulta);
-                if ($bbdd['tipo_usuario'] == 'aministrador') {
+                if ($bbdd['tipo_usuario'] == 'administrador') {
                     header("Location: ../backend/backend.html");
                 }
                 elseif ($bbdd['tipo_usuario'] == 'vendedor') {
-                    header("Location: javascript:history.back()");
+                    header("Location: ../index.html");
                 }
                 elseif ($bbdd['tipo_usuario'] == 'comprador') {
-                    header("Location: javascript:history.back()");
+                    header("Location: ../index.html");
                 }
             }
             else {
