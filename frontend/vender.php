@@ -8,6 +8,7 @@ session_start();
         <link rel="stylesheet" href="../codigoCSS.css">
     </head>
     <body>
+       
         <?php
 
             if ($_SESSION['correo'] == null) {
