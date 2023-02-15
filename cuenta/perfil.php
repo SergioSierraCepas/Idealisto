@@ -40,15 +40,9 @@ session_start();
                     <?php
                         if ($tipo == 'vendedor') {
                             echo "<option value='comprador'>comprador</option>";
-                            echo "<option value='administrador'>administrador</option>";
                         }
                         elseif ($tipo == 'comprador') {
                             echo "<option value='vendedor'>vendedor</option>";
-                            echo "<option value='administrador'>administrador</option>";
-                        }
-                        elseif ($tipo == 'administrador') {
-                            echo "<option value='vendedor'>vendedor</option>";
-                            echo "<option value='comprador'>comprador</option>";
                         }
                     ?>
                 </select>
