@@ -32,8 +32,8 @@ session_start();
         <form name="perfil" action="perfil.php" method="post">
             <input type='text' class="input" name="nombre" value='<?php echo $nombre ?>'><br>
             Cambiar contrseña <input type="checkbox" id="checkbox" onclick="pass()"><br>
-            <span id="span2"></span><input type='text' class="claves" name="clave2" id="clave2" placeholder="Contraseña nueva"><span id="span"></span>
-            <input type='text' class="claves" name="clave" id="clave" placeholder="Contraseña actual">
+            <span id="span2"></span><input type='password' class="claves" name="clave" id="clave" placeholder="Contraseña actual"><span id="span"></span>
+            <input type='password' class="claves" name="clave2" id="clave2" placeholder="Contraseña nueva">
             <p class="input">Tipo de usuario:
                 <select name="tipo" id="">
                     <option value='<?php echo $tipo ?>'><?php echo $tipo ?></option>
@@ -49,7 +49,6 @@ session_start();
             </p>
             <div>
                 <input type="submit" class="submit" name="guardar" value="Guardar">
-                <button class="submit"><a href="./login.php" style="text-decoration: none; color: black;">Cancelar</a></button>
                 <input type="submit" class="submit" name="cerrar" value="Cerrar sesión">
             </div>
         </form>
@@ -62,9 +61,10 @@ session_start();
         # Variables
             $nombre = trim(strip_tags($_REQUEST['nombre']));
             $clave = trim(strip_tags($_REQUEST['clave']));
+            $clave2 = trim(strip_tags($_REQUEST['clave2']));
             $tipo = trim(strip_tags($_REQUEST['tipo']));
         
-        if (!empty($nombre)) {
+        if (strlen($nombre) > 4) {
 
             if ($tipo == 'vendedor') {
                 $tipo = 'vendedor';
@@ -80,14 +80,30 @@ session_start();
                 include "../servidor.php";
 
                 $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
-
-            if (!empty($clave)) {
+            
+        # Cambiar la contraseña
+            if (strlen($clave) > 8 && strlen($clave2) > 8) {
                 
                 $clave = md5($clave);
 
                 # Consulta
-                $query = "update usuario set nombres = '$nombre', clave = '$clave', tipo_usuario = '$tipo' where correo like '" . $_SESSION['correo'] ."'";
-                echo "$query <br>";
+                    $query = "select * from usuario where correo like '" . $_SESSION['correo'] . "' and clave = '$clave'";
+                     echo "$query <br>";
+
+                # Ejecutar consulta
+                    $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
+
+                    $bbdd = mysqli_fetch_array($consulta);
+
+                    # Cambiar la contraseña
+                    if ($bbdd['clave'] == $clave) {
+
+                        $clave2 = md5($clave2);
+                            
+                        # Consulta
+                        $query = "update usuario set nombres = '$nombre', clave = '$clave2', tipo_usuario = '$tipo' where correo like '" . $_SESSION['correo'] ."'";
+                        echo "$query <br>";
+                    }
             }
             else {
                 # Consulta
@@ -97,13 +113,17 @@ session_start();
 
             # Ejecutar consulta
                 $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
-
+/*
                 if ($consulta) {
                     header("Location: ../index.php");
                 }
                 else {
                     echo "error";
                 }
+                */
+        }
+        else {
+            echo "<p>Faltan cambos por rellenar o no cumple con los requisitos mínimos</p>";
         }
     }
     if (isset($_REQUEST['cerrar'])) {

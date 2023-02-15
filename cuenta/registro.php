@@ -29,10 +29,11 @@
         # Variables
             $nombre = trim(strip_tags($_REQUEST['nombre']));
             $correo = trim(strip_tags($_REQUEST['correo']));
+            $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
             $clave = trim(strip_tags($_REQUEST['clave']));
             $tipo = trim(strip_tags($_REQUEST['tipo']));
 
-        if (!empty($nombre) && !empty($correo) && !empty($clave) && ($tipo == 1 || $tipo == 2)) {
+        if (strlen($nombre) > 4 && !empty($correo) && filter_var($correo, FILTER_VALIDATE_EMAIL) && strlen($clave) > 8 && ($tipo == 1 || $tipo == 2)) {
             
             $clave = md5($clave);
 
@@ -79,7 +80,7 @@
             }
         }
         else {
-            echo "<p style='color: red;'>Faltan campos por rellenar</p>";
+            echo "<p style='color: red;'>Faltan campos por rellenar y la contraseña debe de tener mínimo más de 8 caracteres</p>";
         }
         mysqli_close($conexion);
     }

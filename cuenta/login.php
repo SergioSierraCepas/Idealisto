@@ -28,7 +28,7 @@ session_start();
             $clave = trim(strip_tags($_REQUEST['clave']));
 
         # Comprobar usuario
-        if (!empty($correo) && !empty($clave)) {
+        if (!empty($correo) && strlen($clave) > 8) {
 
             $_SESSION['correo'] = $correo;
             $clave=md5($clave);
