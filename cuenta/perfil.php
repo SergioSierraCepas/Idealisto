@@ -95,12 +95,11 @@ session_start();
                 echo "$query <br>";
             }
 
-
             # Ejecutar consulta
                 $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
 
                 if ($consulta) {
-                    header("Location: login.php");
+                    header("Location: ../index.php");
                 }
                 else {
                     echo "error";
