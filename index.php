@@ -9,7 +9,7 @@ session_start();
     <link rel="stylesheet" href="codigoCSS.css">
     <title>Práctica PHP+MySQL+Seguridad</title>
 </head>
-    <body>
+    <body id="bodyindex">
         <div class="divlogo">
             <?php
                 if ($_SESSION['correo'] == null) {
