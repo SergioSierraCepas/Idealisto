@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="../codigoCSS.css">
     </head>
     <body>
+        <a href="../index.php"><img src="../imagenes_index/logo.png" alt="" class="home"></a>
         <h2><u>Registro</u></h2>
         <p class="otro">¿Ya tienes una cuenta? <a href="./login.php">Inicia Sesión</a></p>
         <form action="registro.php" method="post">
@@ -26,62 +27,79 @@
 
     if (isset($_REQUEST['registrar'])) {
 
-        # Variables
+        # Declarar variables con control de etiqueras y espacios
             $nombre = trim(strip_tags($_REQUEST['nombre']));
             $correo = trim(strip_tags($_REQUEST['correo']));
-            $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
             $clave = trim(strip_tags($_REQUEST['clave']));
             $tipo = trim(strip_tags($_REQUEST['tipo']));
 
-        if (strlen($nombre) > 4 && !empty($correo) && filter_var($correo, FILTER_VALIDATE_EMAIL) && strlen($clave) > 8 && ($tipo == 1 || $tipo == 2)) {
-            
-            $clave = md5($clave);
+        # Control de errores
+            if (strlen($nombre) > 4 && filter_var($correo, FILTER_VALIDATE_EMAIL) && strlen($clave) >= 8 && ($tipo == 1 || $tipo == 2)) {
+                
+                $clave = md5($clave);
 
-            if ($tipo == 1) {
-                $tipo = 'comprador';
-            }
-            elseif ($tipo == 2) {
-                $tipo = 'vendedor';
-            }
-            
-            # Filtrar usuarios existentes
-            # Conexión con el servidor
-                include "../servidor.php";
-
-                $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
-            
-            # Consulta
-                $query = "select * from usuario where correo like '$correo'";
-
-            # Ejecutar consulta
-                $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
-
-            # Nº de filas de la consulta
-            $rows = mysqli_num_rows($consulta);
-
-            if ($rows == 1) {
-                echo "<p style='color: red;'>Ya existe un usuario con ese correo</p>";
-            }
-            else {
-
-                # Consulta
-                    $query = "insert into usuario values (null, '$nombre', '$correo', '$clave', '$tipo')";
-                    // echo "$query <br>";
-
-                # Ejecutar consulta
-                    $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
-
-                    if ($consulta) {
-                        header("Location: login.php");
+                # Determinar el tipo de usuario
+                    if ($tipo == 1) {
+                        $tipo = 'comprador';
                     }
+                    elseif ($tipo == 2) {
+                        $tipo = 'vendedor';
+                    }
+                
+                # Filtrar usuarios existentes
+                    # Conexión con el servidor
+                        include "../servidor.php";
+
+                        $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
+                    
+                    # Consulta
+                        $query = "select * from usuario where correo like '$correo'";
+
+                    # Ejecutar consulta
+                        $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
+
+                    # Nº de filas de la consulta
+                    $rows = mysqli_num_rows($consulta);
+
+                    if ($rows == 1) {
+                        echo "<p class='alertas'>Ya existe un usuario con ese correo</p>";
+                    }
+                # Si no existe el usuario en la bbdd se registra
                     else {
-                        echo "error";
+
+                        # Consulta
+                            $query = "insert into usuario values (null, '$nombre', '$correo', '$clave', '$tipo')";
+                            // echo "$query <br>";
+
+                        # Ejecutar consulta
+                            $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
+
+                            if ($consulta) {
+                                header("Location: login.php");
+                            }
+                            else {
+                                echo "error";
+                            }
                     }
             }
-        }
-        else {
-            echo "<p style='color: red;'>Faltan campos por rellenar y la contraseña debe de tener mínimo más de 8 caracteres</p>";
-        }
+        # Si los campos no son correctos
+            else {
+                $error = "";
+                if (strlen($nombre) <= 4) {
+                    $error = $error . "<li class='alertas'>El nombre debe tener como mínimo 5 caracteres</li>\n";
+                }
+                if (empty($correo)) {
+                    $error = $error . "<li class='alertas'>Falta por rellenar el correo o no has introducido uno válido</li>\n";
+                }
+                if (strlen($clave) < 8) {
+                    $error = $error . "<li class='alertas'>La contraseña debe tener un mínimo de 8 caracteres</li>\n";
+                }
+                if ($tipo == 0) {
+                    $error = $error . "<li class='alertas'>Especifica que tipo de cliente quieres ser</li>\n";
+                }
+                echo $error;
+            }
+
         mysqli_close($conexion);
     }
 

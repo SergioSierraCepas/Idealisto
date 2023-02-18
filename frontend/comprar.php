@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="../codigoCSS.css">
     </head>
     <body>
-        
+        <a href="../index.php"><img src="../imagenes_index/logo.png" alt="" class="home"></a>
 <?php
 
     session_start();
@@ -19,7 +19,7 @@
             $query = "select * from pisos";
 
         # Ejecutar consulta
-            $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
+            $consulta = mysqli_query($conexion,$query);
 
         # Nº de filas de la consulta
         $rows = mysqli_num_rows($consulta);
@@ -42,58 +42,52 @@
                 echo "<input type='hidden' name='precio' value=" . $bbdd['precio'] . ">";
                 echo "<input type='hidden' name='id_piso' value=" . $bbdd['Codigo_piso'] . ">";
                 echo "<input type='hidden' name='id_user' value=" . $bbdd['usuario_id'] . ">";
-                echo "<input type='submit' class='submit' name='añadir' value='Comprar'>";
+                echo "<input type='submit' class='submit' name='comprar' value='Comprar'>";
                 echo "</form>";
                 echo "</div>";
             }
         }
         else {
-            echo "<p> Actualmente no hay contenido, inténtelo más tarde.</p>";
+            echo "<p>Actualmente no hay contenido, inténtelo más tarde.</p>";
         }
 
-        if (isset($_REQUEST['añadir'])) {
+        if (isset($_REQUEST['comprar'])) {
             
-            if ($_SESSION['correo'] == null) {
-                header("Location: login.php");
-            }
-            else {
+            # Comprobar si ha iniciado sesión
+                if ($_SESSION['correo'] == null) {
+                    header("Location: login.php");
+                }
+                else {
+                    
+                    $id_piso = $_REQUEST['id_piso'];
+                    $id_user = $_REQUEST['id_user'];
+                    $precio = $_REQUEST['precio'];
 
-                #echo "tu usuario es " . $_SESSION['correo'];
-                
-                $id_piso = $_REQUEST['id_piso'];
-                $id_user = $_REQUEST['id_user'];
-                $precio = $_REQUEST['precio'];
+                    # Conexión con el servidor
+                        include "../servidor.php";
 
-                # Conexión con el servidor
-                   
+                        $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
-                    $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+                    # Consulta
+                        $query = "insert into comprados values ($id_user, $id_piso, $precio)";
+                        // echo $query;
 
-                # Consulta
-                    $query = "insert into comprados values ($id_user, $id_piso, $precio)";
-                    # echo $query;
+                    # Ejecutar consulta
+                        if (mysqli_query($conexion,$query)) {
+                            
+                            echo "<h2>Piso comprado</h2>";
 
-                # Ejecutar consulta
-                    if (mysqli_query($conexion,$query)) {
-                        
-                        echo "Piso comprado";
+                            # Consulta
+                                $query = "delete from pisos where Codigo_piso = '$id_piso'";
+                                // echo $query;
 
-                        # Conexión con el servidor
-                        
-
-                            $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-                        # Consulta
-                            $query = "delete from pisos where Codigo_piso = '$id_piso'";
-                            # echo $query;
-
-                        # Ejecutar consulta
-                            $consulta = mysqli_query($conexion,$query);
-                    }
-                    else {
-                        echo "No ha sido posible";
-                    }
-            }
+                            # Ejecutar consulta
+                                $consulta = mysqli_query($conexion,$query);
+                        }
+                        else {
+                            echo "<p class='alertas'>No ha sido posible</p>";
+                        }
+                }
             mysqli_close($conexion);
         }
 ?>

@@ -28,6 +28,7 @@ session_start();
         <script src="../js.js"></script>
     </head>
     <body>
+        <a href="../index.php"><img src="../imagenes_index/logo.png" alt="" class="home"></a>
         <h2><u>Perfil</u></h2>
         <form name="perfil" action="perfil.php" method="post">
             <input type='text' class="input" name="nombre" value='<?php echo $nombre ?>'><br>
@@ -38,12 +39,13 @@ session_start();
                 <select name="tipo" id="">
                     <option value='<?php echo $tipo ?>'><?php echo $tipo ?></option>
                     <?php
-                        if ($tipo == 'vendedor') {
-                            echo "<option value='comprador'>comprador</option>";
-                        }
-                        elseif ($tipo == 'comprador') {
-                            echo "<option value='vendedor'>vendedor</option>";
-                        }
+                        # Posibilidad de cambiar de tipo de usuario
+                            if ($tipo == 'vendedor') {
+                                echo "<option value='comprador'>comprador</option>";
+                            }
+                            elseif ($tipo == 'comprador') {
+                                echo "<option value='vendedor'>vendedor</option>";
+                            }
                     ?>
                 </select>
             </p>
@@ -58,7 +60,7 @@ session_start();
 
     if (isset($_REQUEST['guardar'])) {
 
-        # Variables
+        # Declarar variables con control de etiqueras y espacios
             $nombre = trim(strip_tags($_REQUEST['nombre']));
             $clave = trim(strip_tags($_REQUEST['clave']));
             $clave2 = trim(strip_tags($_REQUEST['clave2']));
@@ -72,58 +74,58 @@ session_start();
             elseif ($tipo == 'comprador') {
                 $tipo = 'comprador';
             }
-            elseif ($tipo == 'administrador') {
-                $tipo = 'administrador';
-            }
 
             # Conexión con el servidor
                 include "../servidor.php";
 
                 $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);      
             
-        # Cambiar la contraseña
-            if (strlen($clave) > 8 && strlen($clave2) > 8) {
-                
-                $clave = md5($clave);
+            # Si se quiere cambiar la contraseña
+                if (strlen($clave) > 8 && strlen($clave2) > 8) {
+                    
+                    $clave = md5($clave);
 
-                # Consulta
-                    $query = "select * from usuario where correo like '" . $_SESSION['correo'] . "' and clave = '$clave'";
-                     echo "$query <br>";
+                    # Consulta
+                        $query = "select * from usuario where correo like '" . $_SESSION['correo'] . "' and clave = '$clave'";
+                        // echo "$query <br>";
 
-                # Ejecutar consulta
-                    $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
+                    # Ejecutar consulta
+                        $consulta = mysqli_query($conexion,$query);
 
-                    $bbdd = mysqli_fetch_array($consulta);
+                        $bbdd = mysqli_fetch_array($consulta);
 
-                    # Cambiar la contraseña
-                    if ($bbdd['clave'] == $clave) {
+                        # Si la contraseña es correcta cambiarla
+                            if ($bbdd['clave'] == $clave) {
 
-                        $clave2 = md5($clave2);
-                            
-                        # Consulta
-                        $query = "update usuario set nombres = '$nombre', clave = '$clave2', tipo_usuario = '$tipo' where correo like '" . $_SESSION['correo'] ."'";
-                        echo "$query <br>";
-                    }
-            }
-            else {
-                # Consulta
-                $query = "update usuario set nombres = '$nombre', tipo_usuario = '$tipo' where correo like '" . $_SESSION['correo'] ."'";
-                echo "$query <br>";
-            }
+                                $clave2 = md5($clave2);
+                                    
+                                # Consulta
+                                $query = "update usuario set nombres = '$nombre', clave = '$clave2', tipo_usuario = '$tipo' where correo like '" . $_SESSION['correo'] ."'";
+                                // echo "$query <br>";
+                            }
+                }
+                elseif (strlen($clave) > 1 && strlen($clave) < 8 && strlen($clave2) > 1 && strlen($clave2) < 8) {
+                    echo "<p class='alertas'>La contraseña debe tener un mínimo de 8 caracteres</p>";
+                }
+            # Sino actualizar todos los datos menos la contraseña
+                else {
+                    # Consulta
+                    $query = "update usuario set nombres = '$nombre', tipo_usuario = '$tipo' where correo like '" . $_SESSION['correo'] ."'";
+                    echo "$query <br>";
+                }
 
             # Ejecutar consulta
-                $consulta = mysqli_query($conexion,$query) or die ("Fallo en la consulta");
-/*
+                $consulta = mysqli_query($conexion,$query);
+
                 if ($consulta) {
                     header("Location: ../index.php");
                 }
                 else {
                     echo "error";
                 }
-                */
         }
         else {
-            echo "<p>Faltan cambos por rellenar o no cumple con los requisitos mínimos</p>";
+            echo "<p class='alertas'>Faltan cambos por rellenar</p>";
         }
     }
     if (isset($_REQUEST['cerrar'])) {

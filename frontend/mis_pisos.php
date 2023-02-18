@@ -5,8 +5,7 @@
         <link rel="stylesheet" href="../codigoCSS.css">
     </head>
     <body>
-    </body>
-<html>
+        <a href="../index.php"><img src="../imagenes_index/logo.png" alt="" class="home"></a>
 <?php
 session_start();
 if ($_SESSION['correo'] == null) {
@@ -47,7 +46,6 @@ else {
             echo "<p>Dimensiones: " . $bbdd['metros'] . " m2</p>";
             echo "<p>Localidad: " . $bbdd['zona'] . "</p>";
             echo "<p>Precio: " . $bbdd['precio'] . "€</p>";
-            echo "<input type='submit' class='submit' name='añadir' value='Comprar'>";
             echo "</form>";
             echo "</div>";
         }
@@ -59,3 +57,5 @@ else {
     mysqli_close($conexion);
 }
 ?>
+    </body>
+<html>

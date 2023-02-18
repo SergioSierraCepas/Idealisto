@@ -9,9 +9,10 @@ session_start();
     <link rel="stylesheet" href="codigoCSS.css">
     <title>Práctica PHP+MySQL+Seguridad</title>
 </head>
-    <body id="bodyindex">
+    <body style=<?php $num=rand(1,3); echo "background-image: url('./fondo$num'); background-size: 100%;"; ?>>
         <div class="divlogo">
             <?php
+            # Comprobar inicio de sesión
                 if ($_SESSION['correo'] == null) {
                     echo "<a href='./cuenta/login.php'><img src='./imagenes_index/pibe.jpg' class='imglogin' title='Iniciar Sesión'></a>";
                 }
