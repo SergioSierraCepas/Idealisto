@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="../../codigoCSS.css">
     </head>
     <body>
-        <form action="alta.php" method="POST" enctype="multipart/form-data">
+        <form action="baja.php" method="POST" enctype="multipart/form-data">
             Calle:<input class='input' type="text" name="calle"><br>
             Numero:<input class='input' type="text" name="numero"><br>
             Piso:<input class='input' type="number" name="piso"><br>
@@ -18,25 +18,25 @@
 <?php
 if (isset($_REQUEST['enviar'])){
     //declaramos variables 
-    $calle=$_REQUEST['calle'];
-    $piso=$_REQUEST['piso'];
-    $numero=$_REQUEST['numero'];
-    $puerta=$_REQUEST['puerta'];
+    $calle=strip_tags(trim($_REQUEST['calle']));
+    $numero=strip_tags(trim($_REQUEST['numero']));
+    $piso=strip_tags(trim($_REQUEST['piso']));
+    $puerta=strip_tags(trim($_REQUEST['puerta']));
     //errores 
     $errores = "";
-    if (strip_tags((trim($calle) == ""))){
-        $errores = $errores . "   <LI>Se requiere la calle de la vivienda\n";
+    if (is_numeric($calle) || $calle == "") {
+        $errores = $errores . "<li>El campo 'Calle' no puede ser un número.\n";
     }
-    if (!is_numeric((trim($numero) == ""))){
-        $errores = $errores . "   <LI>Se requiere un numero de la vivienda\n";
+    if (!is_numeric($numero) || $numero == "") {
+        $errores = $errores . "<li>El campo 'Número' debe ser numérico." . $numero . "\n";
     }
-    if (!is_numeric(trim($piso) == "")){
-        $errores = $errores . "   <LI>Se requiere un piso de la vivienda de la vivienda\n";
+    if (!is_numeric($piso) || $piso == "") {
+        $errores = $errores . "<li>El campo 'Piso' debe ser numérico." . $piso . "\n";
     }
-    if (strip_tags(trim($puerta) == "")){
-        $errores = $errores . "   <LI>Se requiere un usuario de la vivienda\n";
+    if ($puerta == "" ){
+        $errores = $errores . "   <LI>Se requiere la puerta de la vivienda\n";
     }
-    else {
+    if ($errores == "" ){
         //conexion con el servidor 
         $conexion= mysqli_connect("localhost","root","rootroot") or die ("no se puede conectar con el servidor");
         //conexion con la base de datos 
@@ -64,6 +64,9 @@ if (isset($_REQUEST['enviar'])){
         }
         //cerrar conexion 
         mysqli_close($conexion);
+    }
+    else {
+        echo $errores;
     }
 }
 

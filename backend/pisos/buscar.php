@@ -10,38 +10,39 @@
             Piso:<input class='input' type="number" name="piso"><br>
             puerta:<input class='input' type="text" name="puerta"><br>
             <input class='input'  type="submit" value="buscar" name='buscar'>
+            <a href="pisos.html">volver </a>
         </form>
     </body>
 </html>
 <?php
 if (isset($_REQUEST['buscar'])){
     //declaracion de variables 
-    $calle=$_REQUEST['calle'];
-    $numero=$_REQUEST['numero'];
-    $piso=$_REQUEST['piso'];
-    $puerta=$_REQUEST['puerta'];
+    $calle=strip_tags(trim($_REQUEST['calle']));
+    $numero=strip_tags(trim($_REQUEST['numero']));
+    $piso=strip_tags(trim($_REQUEST['piso']));
+    $puerta=strip_tags(trim($_REQUEST['puerta']));
     //errores
     $errores = "";
-    if (strip_tags((trim($calle) == ""))){
-        $errores = $errores . "   <LI>Se requiere la calle de la vivienda\n";
+    if (is_numeric($calle) || $calle == "") {
+        $errores = $errores . "<li>El campo 'Calle' no puede ser un número.\n";
     }
-    if (!is_numeric((trim($numero) == ""))){
-        $errores = $errores . "   <LI>Se requiere un numero de la vivienda\n";
+    if (!is_numeric($numero) || $numero == "") {
+        $errores = $errores . "<li>El campo 'Número' debe ser numérico." . $numero . "\n";
     }
-    if (!is_numeric(trim($piso) == "")){
-        $errores = $errores . "   <LI>Se requiere un piso de la vivienda de la vivienda\n";
+    if (!is_numeric($piso) || $piso == "") {
+        $errores = $errores . "<li>El campo 'Piso' debe ser numérico." . $piso . "\n";
     }
-    if (strip_tags(trim($puerta) == "")){
-        $errores = $errores . "   <LI>Se requiere un usuario de la vivienda\n";
+    if ($puerta == "" ){
+        $errores = $errores . "   <LI>Se requiere la puerta de la vivienda\n";
     }
-    //coenexion con el servidor 
-    $conexion = mysqli_connect ("localhost", "root", "rootroot")  or die ("No se puede conectar con el servidor");
-    //coenexion con la base de datos 
-    mysqli_select_db ($conexion,"inmobiliaria") or die ("No se puede seleccionar la base de datos");
-    //crecion de consulta 
-    $query =("select * from pisos where calle='$calle' and piso='$piso' and  numero='$numero' and  puerta='$puerta'");
-    //echo $query;
-    $consulta = mysqli_query ($conexion,$query) or die ("Fallo en la consulta");
+    if ($errores == ""){
+        //coenexion con el servidor 
+            $conexion = mysqli_connect ("localhost", "root", "rootroot")  or die ("No se puede conectar con el servidor");
+        //coenexion con la base de datos 
+            mysqli_select_db ($conexion,"inmobiliaria") or die ("No se puede seleccionar la base de datos");
+        //crecion de consulta 
+            $query =("select * from pisos where calle='$calle' and piso='$piso' and  numero='$numero' and  puerta='$puerta'");
+            $consulta = mysqli_query ($conexion,$query) or die ("Fallo en la consulta");
 
     //mostrar resultados 
     $nfilas = mysqli_num_rows ($consulta);
@@ -76,6 +77,10 @@ if (isset($_REQUEST['buscar'])){
       echo "<a href=pisos.html> voler </a>";
    
 
+    }
+    }
+    else {
+        echo $errores;
     }
 }
 

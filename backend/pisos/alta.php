@@ -17,6 +17,7 @@
             Imagen <input  class='input'type="file" name="imagen"><br>
             Usuario <input class='input' type="text" name="usuario"><br>
             <input class='input' type="submit" value="enviar" name="enviar">
+            <a href="pisos.html">volver </a>
         </form>
     </body>
 </html>
@@ -35,20 +36,19 @@ $nombre=strip_tags(trim($_REQUEST['usuario']));
 $comprobacion=false;
 
 ///////////comprobacion existencia usuario /////////////////////////////////
-    $conexion= mysqli_connect("localhost","root","rootroot") or die ("no se puede conectar con el servidor");
+    $conexion= mysqli_connect("localhost","root","rootroot") or die ("No se puede conectar con el servidor");
 //conexion con la base de datos 
-    mysqli_select_db($conexion,"inmobiliaria") or die ("no se puede seleccionar la base de datos");
+    mysqli_select_db($conexion,"inmobiliaria") or die ("No se puede seleccionar la base de datos");
 //declaramos la consulta 
     $query="select * from usuario where nombres='$nombre'";
-//echo $query;
 //aplicamos consulta 
-    $consulta = mysqli_query ($conexion,$query) or die ("fallo de la consulta");
+    $consulta = mysqli_query ($conexion,$query) or die ("Fallo de la consulta");
 
 
     //mostramos resultado 
     $nfilas=mysqli_num_rows($consulta);
     if ($nfilas == 0){
-        echo "no existe el usuario";
+        echo "No existe el usuario";
     }
     else {
         $resultado =mysqli_fetch_array($consulta);
@@ -59,8 +59,6 @@ $comprobacion=false;
 
     //echo $usuario;
  if ($comprobacion){
-    echo $numero; 
-    echo $piso;
     //comprobacion de errores
     $errores = "";
  
@@ -79,7 +77,7 @@ $comprobacion=false;
     if (!is_numeric($cp) || $cp == "") {
         $errores = $errores . "   <li>El campo 'Código postal' debe ser numérico." . $cp . "\n";
     }
-    if (!is_numeric($metros) || $metros == "") {
+    if (!is_numeric($m2) || $m2 == "") {
         $errores = $errores . "<li>El campo 'Metros2' debe ser numérico." . $metros . "\n";
     }
     if (is_numeric($zona) || $zona == "") {
@@ -107,15 +105,15 @@ $comprobacion=false;
     //comprobacionde tamaño
     else if($_FILES['imagen']['error']== UPLOAD_ERR_FORM_SIZE) {
         $maxsize=$_REQUEST['max-size'];
-        $errores=$errores."<li>el tamaño supera el permitido ($maxsize)\n"; 
+        $errores=$errores."<li>El tamaño supera el permitido ($maxsize)\n"; 
     }
     //no se ha introducido ningun fichero o no se ha podido subir 
     else if ($_FILES['imagen']['name'] ==""){
         $imagen='';
-        $errores = $errores ."<li> no se ha introducido una imagen \n";
+        $errores = $errores ."<li>No se ha introducido una imagen \n";
     }
     else{
-        $errores=$errores ."<li>no se ha podido subir el fichero\n";
+        $errores=$errores ."<li>No se ha podido subir el fichero\n";
     }
 
     //mostrar errores 
@@ -132,14 +130,12 @@ $comprobacion=false;
 
 
     if ($errores == ""){
-        echo "swss";
         //conexion al servidor 
             $conexion=mysqli_connect("localhost","root","rootroot") or die ("no se puede conectar con el servidor");
         //conexion con la base de datos 
             mysqli_select_db($conexion,"inmobiliaria") or die ("no se puede seleccionar la base de datos");
         //crecion de consulta e inserccion de la consulta 
-            $consulta="insert into pisos (calle,numero,piso,puerta,cp,metros,zona,precio,imagen,usuario_id) values ('$calle','$numero','$piso','$puerta','$cp','$m2','$zona','$precio','$ruta','$usuario')";
-        echo $consulta;
+            $consulta="insert into pisos (calle,numero,piso,puerta,cp,metros,zona,precio,imagen,usuario_id) values ('$calle','$numero','$piso','$puerta','$cp','$m2','$zona','$precio','$ruta','$usuario')";      
         //resultado de la consulta 
         if (mysqli_query($conexion,$consulta)){
             echo "oferta dada de alta";
@@ -147,7 +143,7 @@ $comprobacion=false;
             echo "<a href='pisos.html'>Volver</a>";
         }
         else {
-            echo "error en la subida de la noticia";
+            echo "error en la subida de la oferta ";
             echo "<br>";
             echo "<a href='pisos.html'>Volver</a>";
         }
