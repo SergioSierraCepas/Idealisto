@@ -51,7 +51,7 @@ if ($nfilas > 0)
    }
 
    echo  ("</TABLE>\n");
-   echo "<br><a href=pisos.html> volver </a>";
+   echo "<br><a id='volver' href=pisos.html> volver </a>";
    echo "</div>";
 } 
 else
