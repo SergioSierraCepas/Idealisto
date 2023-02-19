@@ -109,3 +109,11 @@ a {
     border: 1px solid black;
     border-radius: 5px;
 }
+#table{
+    display:block;
+    margin: auto;
+    background-color: blue;
+}
+#volver1{
+    text-align: left;
+}

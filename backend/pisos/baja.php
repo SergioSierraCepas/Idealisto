@@ -51,7 +51,7 @@ if (isset($_REQUEST['enviar'])){
 
             echo "<h1>oferta eliminada </h1>";
             echo "<br>";
-            echo "<a href=pisos.html> voler </a>";
+            echo "<a  id='volver' href=pisos.html> voler </a>";
         
         }
         
@@ -59,7 +59,7 @@ if (isset($_REQUEST['enviar'])){
         
             echo "<h1>fallo en la eliminacion <h1>";
             echo "<br>";
-            echo "<a href=pisos.html> voler </a>";
+            echo "<a  id='volver' href=pisos.html> voler </a>";
         
         }
         //cerrar conexion 

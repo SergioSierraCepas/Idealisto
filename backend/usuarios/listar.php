@@ -31,9 +31,8 @@ if ($nfilas > 0)
       echo ("<TD>" . $resultado['tipo_usuario'] . "</TD>\n");
       echo ("</TR>\n");
    }
-
    echo ("</TABLE>\n");
-   echo "<a href=usuarios.html> voler </a>";
+   echo "<a  id='volver1' href=usuarios.html> volver </a>";
 } 
 else
    echo("No hay usuarios disponibles");

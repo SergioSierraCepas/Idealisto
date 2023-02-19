@@ -50,7 +50,7 @@ if ($nfilas > 0)
    }
 
    echo  ("</TABLE>\n");
-   echo "<a href=pisos.html> voler </a>";
+   echo "<br><a href=pisos.html> volver </a>";
 } 
 else
    echo  ("No hay noticias disponibles");
