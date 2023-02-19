@@ -5,15 +5,15 @@
     </head>
     <body>
     <form action="borrar.php" method="get">
-        <input class='input' type="text" name="nombre" placeholder="Nombre">
-        <input class='input' type="email"  name="correo" placeholder="correo">
-        <input class='input' type="password" name="pass" placeholder="password">
+        <input class='input' type="text" name="nombre" placeholder="Nombre"><br>
+        <input class='input' type="email"  name="correo" placeholder="correo"><br>
+        <input class='input' type="password" name="pass" placeholder="password"><br>
         <select name="tipo">
-            <option>.......</option>
+            <option></option>
             <option  value="administrador">Administrador</option>
             <option  value="comprador">Comprador</option>
             <option  value="vendedor ">Vendedor</option>
-        </select>
+        </select><br>
         <input  class='input' type="submit" name="enviar" value="enviar">
         <a  id='volver' href='usuarios.html'>Volver</a>
         </form>

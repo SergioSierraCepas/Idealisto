@@ -11,7 +11,7 @@
         <input class='input' type="email"  name="correo" placeholder="correo"><br>
         <input type="password" name="pass" placeholder="password"><br>
         <select name="tipo">
-            <option>.......</option>
+            <option></option>
             <option  value="administrador">Administrador</option>
             <option  value="comprador">Comprador</option>
             <option  value="vendedor ">Vendedor</option>

@@ -8,7 +8,7 @@
             <input class='input' type="text" name="name" placeholder="nombre"><br>
             <input class='input' type='email' name="correo" placeholder="correo"><br>
             <select name="tipo"><br>
-                <option>.......</option>
+                <option></option>
                 <option  value="administrador">Administrador</option>
                 <option  value="comprador">Comprador</option>
                 <option  value="vendedor ">Vendedor</option>
