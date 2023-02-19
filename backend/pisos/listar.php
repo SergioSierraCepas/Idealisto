@@ -18,7 +18,8 @@ $consulta = mysqli_query ($conexion,$query) or die ("Fallo en la consulta");
 $nfilas = mysqli_num_rows ($consulta);
 if ($nfilas > 0)
 {
-   echo  ("<TABLE>\n");
+   echo "<div id='cuerpotabla'>";
+   echo  ("<TABLE id='table'>\n");
    echo  ("<TR>\n");
    echo  ("<TH>calle</TH>\n");
    echo  ("<TH>numero</TH>\n");
@@ -51,6 +52,7 @@ if ($nfilas > 0)
 
    echo  ("</TABLE>\n");
    echo "<br><a href=pisos.html> volver </a>";
+   echo "</div>";
 } 
 else
    echo  ("No hay noticias disponibles");

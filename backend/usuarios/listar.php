@@ -33,7 +33,7 @@ if ($nfilas > 0)
       echo ("</TR>\n");
    }
    echo ("</TABLE>\n");
-   echo "<a  id='volver1' href=usuarios.html> volver </a>";
+   echo "<a  href=usuarios.html> volver </a>";
    echo "</div>";
 
 } 
