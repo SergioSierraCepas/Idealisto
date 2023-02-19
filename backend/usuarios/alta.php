@@ -17,7 +17,7 @@
             <option  value="vendedor ">Vendedor</option>
         </select><br>
         <input class='input' type="submit" name="enviar" value="enviar" onClick= comprobar>
-        <a href='usuarios.html'>Volver</a>
+        <a id='volver' href='usuarios.html'>Volver</a>
         </form>
         
     </body>

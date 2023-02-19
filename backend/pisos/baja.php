@@ -11,7 +11,7 @@
             Puerta:<input class='input' type="text" name="puerta"><br>
             Usuario <input class='input' type="text" name="usuario"><br>
             <input class='input' type="submit" value="enviar" name="enviar">
-            <a href="pisos.html">volver </a>
+            <a id='volver'  href="pisos.html">volver </a>
         </form>
     </body>
 </html>

@@ -10,7 +10,7 @@
             Piso:<input class='input' type="number" name="piso"><br>
             puerta:<input class='input' type="text" name="puerta"><br>
             <input class='input'  type="submit" value="buscar" name='buscar'>
-            <a href="pisos.html">volver </a>
+            <a  id='volver' href="pisos.html">volver </a>
         </form>
     </body>
 </html>
