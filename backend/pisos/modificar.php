@@ -51,7 +51,7 @@ if (isset($_REQUEST['modificar'])){
         }
         else{
             $resultado =mysqli_fetch_array($consulta);
-            echo "<h3> Cambie cualquier campo que sede para modificar la oferta</h3>";
+            echo "<h3> Cambie cualquier campo  para modificar la oferta</h3>";
             echo "<form  action='modificar.php' method='POST' enctype='multipart/form-data'>";
             echo "
                 Calle:<input class='input'  type='text' name='calle'  value=".$resultado['calle']."><br>
@@ -130,28 +130,36 @@ if (isset($_REQUEST['entrar2'])){
     elseif ($_FILES['imagen']['error'] == UPLOAD_ERR_FORM_SIZE) {
         $maxsize = $_REQUEST['tamaño'];
         $errores = $errores . "<li>El tamaño del fichero supera el límite predeterminado";
-    }
-
-    //no se ha introducido ningun ficfero o no se ha podido subir 
-    else  if($file ==""){
-        $imagen='';
-        $errores = $errores ."<li> no se ha introducido una imagen \n";
-    }
-    else{
-        $errores=$errores ."<li>no se ha podido subir el fichero\n";
-    }
-
-    //mostrar errores 
-    if ($errores!= "" || $imagen == ''){
-    echo  " errores:\n";
-         echo $errores;
-         echo ("<P>[ <A HREF='javascript:history.back()'>Volver</A> ]</P>\n");
-      
-    }
-    //mover foto a la ubicacion final 
+    }       //mover foto a la ubicacion final 
     if ($fichero){
         move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio . $imagen);
     }
+
+    //no se ha introducido ningun ficfero o no se ha podido subir 
+    if($file ==""){
+         //conexion al servidor 
+         $conexion=mysqli_connect("localhost","root","rootroot") or die ("no se puede conectar con el servidor");
+         //conexion con la base de datos 
+         mysqli_select_db($conexion,"inmobiliaria") or die ("no se puede seleccionar la base de datos");
+         //crecion de consulta e inserccion de la consulta 
+         $consulta="update pisos set calle='$calle',numero='$numero',piso='$piso',puerta='$puerta',cp='$cp',metros='$m',zona='$zona',precio='$precio' where Codigo_piso='$codigo'" or die ("fallo en la consulta ");
+ 
+         //resultado de la consulta 
+         if (mysqli_query($conexion,$consulta)){
+             echo "oferta actualizada";
+             echo "<br>";
+            
+    
+         }
+         else {
+             echo "error al actualizar la noticia";
+             echo "<br>";
+         }
+       
+     
+    }
+    else{
+ 
     if ($errores == ""){
         //conexion al servidor 
         $conexion=mysqli_connect("localhost","root","rootroot") or die ("no se puede conectar con el servidor");
@@ -164,18 +172,26 @@ if (isset($_REQUEST['entrar2'])){
         if (mysqli_query($conexion,$consulta)){
             echo "oferta actualizada";
             echo "<br>";
-            echo "<a href=pisos.html> voler </a>";
+            
    
         }
         else {
             echo "error al actualizar la noticia";
             echo "<br>";
-            echo "<a href=pisos.html> voler </a>";
-            echo $consulta ;
         }
         //cerramos conexion 
         mysqli_close($conexion);
     }
+    }
+
+    //mostrar errores 
+    if ($errores!= "" || $imagen == ''){
+    echo  " errores:\n";
+         echo $errores;
+        
+      
+    }
+    
 
 }
 ?>
