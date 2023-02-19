@@ -140,12 +140,10 @@ $comprobacion=false;
         if (mysqli_query($conexion,$consulta)){
             echo "oferta dada de alta";
             echo "<br>";
-            echo "<a  id='volver' href='pisos.html'>Volver</a>";
         }
         else {
             echo "error en la subida de la oferta ";
             echo "<br>";
-            echo "<a id='volver' href='pisos.html'>Volver</a>";
         }
     }
     //cerramos conexion 

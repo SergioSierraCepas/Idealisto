@@ -14,6 +14,7 @@
                 <option  value="vendedor ">Vendedor</option>
             </select><br>
             <input class='input' type="submit" name="buscar" value="buscar">
+            <a href='usuarios.html'>Volver</a>
         <form>
     </body>
 
@@ -81,12 +82,12 @@ if (isset($_REQUEST['buscar'])){
         
            echo "</TABLE>\n";
            echo "<br>";
-           echo "<a href='usuarios.html'>Volver</a>";
+          
            
         } 
         else{
             echo ("No hay usuarios disponibles");
-            echo "<a href='usuarios.html'>Volver</a>";
+          
         }
         //cerramos conexion 
         
