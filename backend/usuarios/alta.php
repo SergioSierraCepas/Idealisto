@@ -17,6 +17,7 @@
             <option  value="vendedor ">Vendedor</option>
         </select><br>
         <input class='input' type="submit" name="enviar" value="enviar" onClick= comprobar>
+        <a href='usuarios.html'>Volver</a>
         </form>
         
     </body>
@@ -57,12 +58,12 @@ if (isset($_REQUEST['enviar'])){
         if (mysqli_query($conexion,$consulta)){
             echo "oferta dada de alta";
             echo "<br>";
-            echo "<a href='usuarios.html'>Volver</a>";
+            
         }
         else {
             echo "error en la subida de la noticia";
             echo "<br>";
-            echo "<a href='usuarios.html'>Volver</a>";
+           
         }
         //cerramos conexion 
         mysqli_close($conexion);

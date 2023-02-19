@@ -11,6 +11,7 @@
             Puerta:<input class='input' type="text" name="puerta"><br>
             Usuario <input class='input' type="text" name="usuario"><br>
             <input class='input' type="submit" value="enviar" name="enviar">
+            <a href="pisos.html">volver </a>
         </form>
     </body>
 </html>
@@ -51,7 +52,7 @@ if (isset($_REQUEST['enviar'])){
 
             echo "<h1>oferta eliminada </h1>";
             echo "<br>";
-            echo "<a  id='volver' href=pisos.html> voler </a>";
+           
         
         }
         
@@ -59,7 +60,7 @@ if (isset($_REQUEST['enviar'])){
         
             echo "<h1>fallo en la eliminacion <h1>";
             echo "<br>";
-            echo "<a  id='volver' href=pisos.html> voler </a>";
+           
         
         }
         //cerrar conexion 

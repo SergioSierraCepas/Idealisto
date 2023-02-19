@@ -74,7 +74,7 @@ if (isset($_REQUEST['buscar'])){
 
       
       echo  ("</TR>\n");
-      echo "<br> <a href=pisos.html> volver </a>";
+     
    
 
     }

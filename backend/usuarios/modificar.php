@@ -14,6 +14,7 @@
             <option  value="vendedor ">Vendedor</option>
         </select><br>
         <input class='input' type="submit" name="enviar" value="enviar">
+        <a href='usuarios.html'>Volver</a>
         </form>
         
     </body>
@@ -113,12 +114,12 @@ if (isset($_REQUEST['actualizar'])){
         if(mysqli_query($conexion,$query)){
             echo "usuario aceptado ";
             echo "<br>";
-            echo "<a href='usuarios.html'>Volver</a>";
+            
         }
         else {
             echo "usuario no  aceptado";
             echo "<br>";
-            echo "<a href='usuarios.html'>Volver</a>";
+            
         }
         //cerrar 
         mysqli_close ($conexion);
