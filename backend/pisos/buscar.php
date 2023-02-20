@@ -48,6 +48,7 @@ if (isset($_REQUEST['buscar'])){
     $nfilas = mysqli_num_rows ($consulta);
     if ($nfilas > 0)
     {
+        echo "<div id='cuerpotabla'>";
         echo  ("<TABLE>\n");
         echo  ("<TR>\n");
         echo  ("<TH>calle</TH>\n");
@@ -74,7 +75,7 @@ if (isset($_REQUEST['buscar'])){
 
       
       echo  ("</TR>\n");
-     
+     echo "</div>";
    
 
     }
