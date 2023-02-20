@@ -92,7 +92,7 @@ $comprobacion=false;
     $fichero=false;
     //copiar el fichero en el directorio con marca de tiempo 
     if (is_uploaded_file($_FILES['imagen']['tmp_name'])){
-        $directorio="imagenes/";
+        $directorio="../../pisos/";
         $imagen=$_FILES['imagen']['name'];
         $fichero=true;
         //renombrarlo si ya existe

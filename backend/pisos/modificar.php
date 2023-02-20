@@ -117,7 +117,7 @@ if (isset($_REQUEST['entrar2'])){
         $fichero=false;
     //copiar el fichero en el directorio con marca de tiempo 
     if(is_uploaded_file($file)){
-        $directorio="imagenes/";
+        $directorio="../../pisos/";
         $imagen=$_FILES['imagen']['name'];
         $fichero=true;
         //renombrarlo si ya existe
