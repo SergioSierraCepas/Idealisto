@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="../../codigoCSS.css">
     </head>
     <body>
-        <a href="../index.php"><img src="../imagenes_index/logo.png" alt="" class="home"></a>
+        <a href="../../index.php"><img src="../../imagenes_index/logo.png" alt="" class="home"></a>
 <?php
 
     session_start();
