@@ -9,7 +9,7 @@
 <?php
 session_start();
 if ($_SESSION['correo'] == null) {
-    header("Location: ../cuenta/login.php");
+    header("Location: ../../cuenta/login.php");
 }
 else {
     //incluimos variables externas
