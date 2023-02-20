@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="../../codigoCSS.css">
     </head>
     <body>
+    <div id='cuerpotabla'>
     <form action="borrar.php" method="get">
         <input class='input' type="text" name="nombre" placeholder="Nombre"><br>
         <input class='input' type="email"  name="correo" placeholder="correo"><br>
@@ -17,7 +18,8 @@
         <input  class='input' type="submit" name="enviar" value="enviar">
         <a  id='volver' href='usuarios.html'>Volver</a>
         </form>
-    <body>
+    </div>
+    </body>
    </html> 
    <?php
    if (isset($_REQUEST['enviar'])){

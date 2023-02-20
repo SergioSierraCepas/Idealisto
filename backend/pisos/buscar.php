@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="../../codigoCSS.css">
     </head>
     <body>
+    <div id='cuerpotabla'>
         <form action='buscar.php'>
             Calle:<input class='input'  type="text" name="calle"><br>
             Numero:<input class='input'  type="text" name="numero"><br>
@@ -12,6 +13,7 @@
             <input class='input'  type="submit" value="buscar" name='buscar'>
             <a  id='volver' href="pisos.html">volver </a>
         </form>
+    </div>
     </body>
 </html>
 <?php

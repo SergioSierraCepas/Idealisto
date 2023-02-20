@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="../../codigoCSS.css">
     </head>
     <body>
+    <div id='cuerpotabla'>
         <form action="modificar.php" method="get">
         <input class='input' type="text" name="nombre" placeholder="Nombre"><br>
         <input  class='input' type="email"  name="correo" placeholder="correo"><br>
@@ -16,7 +17,7 @@
         <input class='input' type="submit" name="enviar" value="enviar">
         <a id='volver'  href='usuarios.html'>Volver</a>
         </form>
-        
+    </div>
     </body>
 <html>
 <?php
@@ -57,6 +58,7 @@ if (isset($_REQUEST['enviar'])){
         }
         else{
             $resultado =mysqli_fetch_array($consulta);
+                    echo "<div id='cuerpotabla'>";
                     echo "<form  action='modificar.php' method='GET'>";
                             echo "Nombre <input class='input' type='text' name='nom' value=".$resultado['nombres']."><br>";
                             echo "Correo <input class='input' type='email' name='cor' id='email' value=".$resultado['correo']."><br>";
@@ -69,7 +71,8 @@ if (isset($_REQUEST['enviar'])){
                                 </select>";
                             echo "<input class='input' type='hidden' name='id' value=".$resultado['usuario_id']."><br><br>";
                             echo "<input class='inpit' type='submit' value='actualizar' name='actualizar'>
-                    </form>";
+                    </form>
+                    </div>";
 
         }
         mysqli_close($conexion);

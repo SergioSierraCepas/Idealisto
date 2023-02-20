@@ -6,6 +6,7 @@
     </head>
     </head>
     <body>
+    <div id='cuerpotabla'>
         <form action="alta.php" method="get">
         <input class='input'  type="text" name="nombre" placeholder="Nombre"><br>
         <input class='input' type="email"  name="correo" placeholder="correo"><br>
@@ -19,7 +20,7 @@
         <input class='input' type="submit" name="enviar" value="enviar" onClick= comprobar>
         <a id='volver' href='usuarios.html'>Volver</a>
         </form>
-        
+    </div>
     </body>
 <html>
 <?php
