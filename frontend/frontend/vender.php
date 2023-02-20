@@ -126,7 +126,7 @@ session_start();
                         
                         # Comprobar que no existe este piso en la bbdd
                             # Conexión con el servidor
-                                include "../servidor.php";
+                                include "../../servidor.php";
 
                                 $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
                             

@@ -13,7 +13,7 @@ if ($_SESSION['correo'] == null) {
 }
 else {
     //incluimos variables externas
-        include "../servidor.php";
+        include "../../servidor.php";
         $correo=$_SESSION['correo'];
     //echo $correo;
     //conectamos con la base de datos 

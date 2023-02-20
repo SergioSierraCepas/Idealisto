@@ -11,7 +11,7 @@
     session_start();
 
         # Conexión con el servidor
-            include "../servidor.php";
+            include "../../servidor.php";
 
             $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -48,7 +48,7 @@
             }
         }
         else {
-            echo "<p>Actualmente no hay contenido, inténtelo más tarde.</p>";
+            echo "<p style='font-size: 120%; background-color: white; padding: .5%;'>Actualmente no hay contenido, inténtelo más tarde.</p>";
         }
 
         if (isset($_REQUEST['comprar'])) {
@@ -64,7 +64,7 @@
                     $precio = $_REQUEST['precio'];
 
                     # Conexión con el servidor
-                        include "../servidor.php";
+                        include "../../servidor.php";
 
                         $conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
