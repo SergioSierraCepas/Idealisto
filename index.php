@@ -26,13 +26,13 @@ session_start();
             <table class="index">
                 <tr>
                     <td>
-                        <a href="./frontend/comprar.php"><img src="./imagenes_index/compra.jpg" alt="" class="fotosindex"></a>
+                        <a href="./frontend/frontend/comprar.php"><img src="./imagenes_index/compra.jpg" alt="" class="fotosindex"></a>
                     </td>
                     <td>
-                        <a href="./frontend/vender.php"><img src="./imagenes_index/vender.jpg" alt="" class="fotosindex"></a>
+                        <a href="./frontend/frontend/vender.php"><img src="./imagenes_index/vender.jpg" alt="" class="fotosindex"></a>
                     </td>
                     <td>
-                        <a href="./frontend/mis_pisos.php"><img src="./imagenes_index/mis_pisosjpg.jpg" alt="" class="fotosindex"></a>
+                        <a href="./frontend/frontend/mis_pisos.php"><img src="./imagenes_index/mis_pisosjpg.jpg" alt="" class="fotosindex"></a>
                     </td>
                 </tr>
                 <tr>

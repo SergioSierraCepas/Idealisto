@@ -58,7 +58,7 @@ session_start();
                 # Para evitar la unicidad de nombre se añade una marca de tiempo
 
                     if (is_uploaded_file($_FILES['imagen']['tmp_name'])) {
-                        $nombreDirectorio = "../pisos/";
+                        $nombreDirectorio = "../../pisos/";
                         $nombreFichero = $_FILES['imagen']['name'];
                         $copiaFichero = true;
 
