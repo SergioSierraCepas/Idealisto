@@ -29,7 +29,7 @@ session_start();
             $clave = trim(strip_tags($_REQUEST['clave']));
 
         # Si correo no esta vacío y la longitud de clave > 8
-            if (filter_var($correo, FILTER_VALIDATE_EMAIL) && strlen($clave) > 8) {
+            if (filter_var($correo, FILTER_VALIDATE_EMAIL) && strlen($clave) >= 8) {
 
                 # Declarar variables
                     $_SESSION['correo'] = $correo;
