@@ -9,7 +9,7 @@ session_start();
     <link rel="stylesheet" href="codigoCSS.css">
     <title>Práctica PHP+MySQL+Seguridad</title>
 </head>
-    <body style=<?php $num=rand(1,3); echo "background-image: url('./fondo$num'); background-size: 100%;"; ?>>
+    <body>
         <div class="divlogo">
             <?php
             # Comprobar inicio de sesión
