@@ -5,7 +5,7 @@ session_start();
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../codigoCSS.css">
+        <link rel="stylesheet" href="../../codigoCSS.css">
     </head>
     <body>
         <a href="../index.php"><img src="../imagenes_index/logo.png" alt="" class="home"></a>
@@ -13,7 +13,7 @@ session_start();
         <?php
 
             if ($_SESSION['correo'] == null) {
-                header("Location: ../cuenta/login.php");
+                header("Location: ../../cuenta/login.php");
             }
             else {
 

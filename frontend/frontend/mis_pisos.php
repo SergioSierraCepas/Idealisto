@@ -2,7 +2,7 @@
     <head>
         <title>Práctica PHP+MySQL+Seguridad</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../codigoCSS.css">
+        <link rel="stylesheet" href="../../codigoCSS.css">
     </head>
     <body>
         <a href="../index.php"><img src="../imagenes_index/logo.png" alt="" class="home"></a>
